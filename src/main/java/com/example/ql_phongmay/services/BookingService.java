@@ -19,4 +19,5 @@ public interface BookingService {
     BookingResponse approveBooking(Integer id);
     BookingResponse cancelBooking(Integer id);
     void autoUpdateBookingStatus();
+    Page<BookingResponse> getBookingPagingByUser(Integer userId, Pageable pageable);
 }

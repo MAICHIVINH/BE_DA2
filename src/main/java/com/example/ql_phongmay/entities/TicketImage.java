@@ -1,12 +1,7 @@
 package com.example.ql_phongmay.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
+import lombok.*;
 
 @Entity
 @Table(name = "ticket_images")
@@ -20,24 +15,16 @@ public class TicketImage {
     @Column(name = "ticket_image_id")
     private Integer ticketImageId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ticket_id", nullable = false)
-    private Ticket ticket;
-
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(name = "uploaded_at", nullable = false, updatable = false)
-    private LocalDateTime imageUploadAt;
+    @ManyToOne
+    @JoinColumn(name = "ticket_id")
+    private Ticket ticket;
 
-    @Column(name = "is_deleted")
-    private Boolean deleted;
+    @Column(name = "is_main")
+    private Boolean main;
 
-    @PrePersist
-    protected void onCreate() {
-        this.imageUploadAt = LocalDateTime.now();
-        if (this.deleted == null) {
-            this.deleted = false;
-        }
-    }
+    @Column(name = "is_deleted", nullable = false)
+    private Boolean deleted = false;
 }

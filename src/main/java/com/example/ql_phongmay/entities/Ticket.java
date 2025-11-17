@@ -26,6 +26,9 @@ public class Ticket {
     @Column(name = "description")
     private String ticketDescription;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -58,6 +61,9 @@ public class Ticket {
 
     @Column(name = "is_deleted")
     private Boolean deleted;
+
+//    @OneToMany(mappedBy = "tickets", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<TicketImage> images = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {

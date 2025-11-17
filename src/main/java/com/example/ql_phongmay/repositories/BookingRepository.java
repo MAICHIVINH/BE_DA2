@@ -1,5 +1,6 @@
 package com.example.ql_phongmay.repositories;
 
+import com.example.ql_phongmay.dto.response.BookingResponse;
 import com.example.ql_phongmay.entities.Account;
 import com.example.ql_phongmay.entities.Booking;
 import com.example.ql_phongmay.entities.BookingStatus;
@@ -15,4 +16,6 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     Page<Booking> findByDeletedFalse(Pageable pageable);
     Optional<Booking> findByBookingIdAndDeletedFalse(Integer id);
     List<Booking> findByBookingStatus(BookingStatus bookingStatus);
+    Page<Booking> findByUser_UserIdAndDeletedFalse(Integer userId, Pageable pageable);
+
 }

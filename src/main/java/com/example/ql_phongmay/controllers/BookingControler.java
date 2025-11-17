@@ -140,4 +140,21 @@ public class BookingControler {
                         .build()
         );
     }
+
+    @GetMapping("/page-by-user")
+    public ResponseEntity<ApiResponse<Page<BookingResponse>>> getBookingPagingByUser(
+            @RequestParam int page,
+            @RequestParam int size,
+            @RequestParam Integer userId
+    ) {
+        return ResponseEntity.ok(
+                ApiResponse.<Page<BookingResponse>>builder()
+                        .status(HttpStatus.OK.value())
+                        .message("Lấy danh sách booking phân trang theo user thành công")
+                        .data(bookingService.getBookingPagingByUser(
+                                userId, PageRequest.of(page, size)))
+                        .build()
+        );
+    }
+
 }

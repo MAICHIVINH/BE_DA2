@@ -48,7 +48,7 @@ public class DeviceController {
         );
     }
 
-    // Phân trang account
+    // Phân trang device
     @GetMapping("/page")
     public ResponseEntity<ApiResponse<Page<DeviceResponse>>> getDevicePaging(
             @RequestParam int page,

@@ -114,6 +114,7 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public DeviceResponse updateDevice(Integer id, DeviceRequest request, MultipartFile file) {
+
         Device existing = deviceRepository.findByDeviceIdAndDeletedFalse(id)
                 .orElseThrow(() -> new RuntimeException("Device not found with id: " + id));
         DeviceType deviceType = deviceTypeRepository.findById(request.getDeviceTypeId())

@@ -19,6 +19,7 @@ public class TicketResponse {
     private String fullName;
     private String assetTag;
     private String roomCode;
+    private String imageUrl;
     private String priorityName;
     private String ticketStatusName;
     private LocalDateTime ticketCreateAt;

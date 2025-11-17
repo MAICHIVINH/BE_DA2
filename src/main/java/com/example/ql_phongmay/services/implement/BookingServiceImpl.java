@@ -185,5 +185,12 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
+    @Override
+    public Page<BookingResponse> getBookingPagingByUser(Integer userId, Pageable pageable) {
+        return bookingRepository.findByUser_UserIdAndDeletedFalse(userId, pageable)
+                .map(this::mapToResponse);
+    }
+
+
 
 }
