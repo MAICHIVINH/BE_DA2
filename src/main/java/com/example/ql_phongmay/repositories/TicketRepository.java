@@ -1,6 +1,7 @@
 package com.example.ql_phongmay.repositories;
 
 import com.example.ql_phongmay.entities.Account;
+import com.example.ql_phongmay.entities.Booking;
 import com.example.ql_phongmay.entities.Ticket;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,4 +16,5 @@ public interface TicketRepository extends JpaRepository<Ticket, Integer> {
     Optional<Ticket> findByTicketIdAndDeletedFalse(Integer id);
     List<Ticket> findByTicketTitleContainingIgnoreCase(String keyword);
     Optional<Ticket> findByTicketTitleAndDeletedFalse(String accountUserName);
+    Page<Ticket> findByUser_UserIdAndDeletedFalse(Integer userId, Pageable pageable);
 }

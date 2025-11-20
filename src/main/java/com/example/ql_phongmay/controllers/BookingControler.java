@@ -156,5 +156,4 @@ public class BookingControler {
                         .build()
         );
     }
-
 }
